@@ -25,12 +25,12 @@ class SessionsController extends Controller
             throw ValidationException::withMessages(['email' => 'Your provided credentials could not be verified.'
             //auth failed
             ]);
+        }
 
-            session()->regeneration();
+            session()->regenerate();
             
             // redirect with a success flash message
             return redirect('/')->with('success', 'Welcome Back!');
-        }
 
     }
 
