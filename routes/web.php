@@ -17,13 +17,21 @@ Route::post('newsletter', function(){
 	'server' => 'us11'
     ]); 
 
+    try {
 
     $response = $mailchimp->lists->addListMember('0afe457f5b',[
         'email_address' => request('email'),
         'status' => 'subscribed'
     ]);
+    
+    } catch (\Exception $e) {
+        throw \Illuminate\Validation\ValidationException::withMessages([
+            'email' => 'This email could not be added to our newsletter list.'
+        ]);
+    } 
 
-    return redirect('/')->with('success', 'You are now signed up for our newsletter!'); 
+    return redirect('/')
+    ->with('success', 'You are now signed up for our newsletter!'); 
 });
 
 Route::get('/', [PostController::class, 'index'])->name('home');
