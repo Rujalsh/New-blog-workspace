@@ -7,7 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
-
+use App\Http\Middleware\MustBeAdministrator;
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 
@@ -24,6 +24,8 @@ Route::get('login',[SessionsController::class, 'create'])->middleware('guest')->
 Route::post('login',[SessionsController::class, 'store'])->middleware('guest');
 
 Route::post('logout',[SessionsController::class, 'destroy'])->middleware('auth');
+
+Route::get('admin/post/create',[PostController::class, 'create'])->middleware((MustBeAdministrator::class));
 
 
 

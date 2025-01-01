@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -25,4 +26,8 @@ class PostController extends Controller
 
     // index, show, create, store, edit, update, destroy
     
-}
+    public function create( )
+    {
+        return view('posts.create');
+        }
+    }   
