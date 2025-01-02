@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Auth;
 
 class MustBeAdministrator
 {
@@ -15,12 +16,13 @@ class MustBeAdministrator
      */
     public function handle(Request $request, Closure $next): Response
     {
-        
+
         if (auth()->user()?->username !== 'Random') {  
             //if the user is not Random
-            abort(Response::HTTP_FORBIDDEN);
-        }
-        
-        return $next($request);
+        abort(Response::HTTP_FORBIDDEN); // 403 Forbidden
     }
+
+    return $next($request);
+    }
+
 }
