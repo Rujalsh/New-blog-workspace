@@ -30,4 +30,4 @@ Route::get('admin/post/create',[PostController::class, 'create'])->middleware((M
 Route::post('admin/posts',[PostController::class, 'store'])->middleware((MustBeAdministrator::class));
 
 
-
+// ->middleware((MustBeAdministrator::class))
