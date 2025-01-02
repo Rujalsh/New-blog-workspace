@@ -1,83 +1,27 @@
 <x-layout>
-    <x-panel class="max-w-sm mx-auto ">
-    <section class="px-6 py-8">
-        <form method="POST" action="/admin/posts">
+    <section class=" py-8 max-w-md mx-auto">
+
+        <h1 class="text-xl font-bold mb-6">
+            Create a New Post
+        </h1>
+
+    <x-panel>
+        <form method="POST" action="/admin/posts" enctype="multipart/form-data">
             @csrf
 
-            <div class="mb-6">
-                <label for="title" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-                    Title
-                </label>
+            <x-form.input name="title" />
 
-                <input class="border border-gray-400 p-2 w-full"
-                    type="text"
-                    name="title"
-                    id="title"
-                    value="{{ old('title') }}"
-                    required
-                >
+            <x-form.input name="slug" />
 
-                @error('title')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                @enderror
-            </div>
+            <x-form.input name="thumbnail" type="file" />
 
-            <div class="mb-6">
-                <label for="slug" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-                    Slug
-                </label>
+            <x-form.textarea name="excerpt" />
 
-                <input class="border border-gray-400 p-2 w-full"
-                    type="text"
-                    name="slug"
-                    id="slug"
-                    value="{{ old('slug') }}"
-                    required
-                >
+            <x-form.textarea name="body"  />
 
-                @error('slug')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                @enderror
-            </div>
+            <x-form.field>
 
-            <div class="mb-6">
-                <label for="excerpt" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-                    Excerpt
-                </label>
-
-                <textarea class="border border-gray-400 p-2 w-full"
-                    name="excerpt"
-                    id="excerpt"
-                    required
-                >{{ old('excerpt') }}</textarea>
-
-                @error('excerpt')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="mb-6">
-                <label for="body" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-                    Body
-                </label>
-
-                <textarea class="border border-gray-400 p-2 w-full"
-                    name="body"
-                    id="body"
-                    required
-                >{{ old('body') }}</textarea>
-
-                @error('body')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                @enderror
-            </div>
-
-            
-
-            <div class="mb-6">
-                <label for="category_id" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-                    Category
-                </label>
+                <x-form.label name="category_id" />
 
                 <select name="category_id" id="category_id">
                     @foreach (\App\Models\Category::all() as $category)
@@ -86,16 +30,15 @@
                     @endforeach
                 </select>
 
-                @error('category_id')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                @enderror
-            </div>
+                <x-form.error name="category_id" />
 
-            <x-submit-button>
+            </x-form.field>
+
+            <x-form.button>
                 Publish
-            </x-submit-button>
+            </x-form.button>
 
         </form>
-    </section> 
     </x-panel> 
+</section> 
 </x-layout>
