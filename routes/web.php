@@ -26,8 +26,17 @@ Route::post('login',[SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout',[SessionsController::class, 'destroy'])->middleware('auth');
 
 // Route::get('admin/post/create',[PostController::class, 'create']);
-Route::get('admin/post/create',[PostController::class, 'create']);
-Route::post('admin/posts',[PostController::class, 'store']);
+
+
+Route::middleware('admin')->group(function () {
+    Route::get('admin/posts/create', [PostController::class, 'create']);
+    Route::post('admin/posts', [PostController::class, 'store']);
+});
+//************ */ previous code********
+// Route::get('admin/posts/create',[PostController::class, 'create']);
+// Route::post('admin/posts',[PostController::class, 'store']);
+// Route::get('admin/posts/create',[PostController::class, 'create'])->middleware('admin');
+// Route::post('admin/posts',[PostController::class, 'store'])->middleware('admin');
 
 
 // ->middleware((MustBeAdministrator::class))

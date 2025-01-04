@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Application;
+use App\Http\Middleware\MustBeAdministrator;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
@@ -12,10 +13,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         // Register your custom middleware
-        $middleware->web(append: [
-        \App\Http\Middleware\MustBeAdministrator::class,
-        ]);
+    // $middleware->alias('admin', MustBeAdministrator::class); // Define 'admin' alias
+    $middleware->alias(['admin' => \App\Http\Middleware\MustBeAdministrator::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+
+        
+
+    

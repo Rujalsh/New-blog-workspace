@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Services\Newsletter;
-use App\Services\MailChimpNewsletter;
 use MailchimpMarketing\ApiClient;
+use App\Services\MailChimpNewsletter;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use App\Http\Middleware\MustBeAdministrator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,5 +34,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
+        // Route::aliasMiddleware('admin', MustBeAdministrator::class);
     }
 }
