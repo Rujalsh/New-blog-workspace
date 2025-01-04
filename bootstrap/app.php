@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Register your custom middleware
+        $middleware->web(append: [
+        \App\Http\Middleware\MustBeAdministrator::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
