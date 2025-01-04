@@ -25,12 +25,17 @@ Route::post('login',[SessionsController::class, 'store'])->middleware('guest');
 
 Route::post('logout',[SessionsController::class, 'destroy'])->middleware('auth');
 
+// Route::get('admin/dashboard', function () {
+//     return view('admin.dashboard');
+// });
+
 // Route::get('admin/post/create',[PostController::class, 'create']);
 
 
 Route::middleware('admin')->group(function () {
     Route::get('admin/posts/create', [PostController::class, 'create']);
     Route::post('admin/posts', [PostController::class, 'store']);
+
 });
 //************ */ previous code********
 // Route::get('admin/posts/create',[PostController::class, 'create']);
