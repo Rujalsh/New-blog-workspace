@@ -44,9 +44,11 @@
                             </button>
                         </x-slot>
 
-                        <x-dropdown-item href="/admin/posts" :active="request()->routeIs('admin/posts')"> Dashboard </x-dropdown-item>
-
-                        <x-dropdown-item href="/admin/posts/create" :active="request()->routeIs('admin/posts/create')"> New post</x-dropdown-item>
+                        @admin
+                            <x-dropdown-item href="/admin/posts" :active="request()->routeIs('admin/posts')"> Dashboard </x-dropdown-item>
+                        
+                            <x-dropdown-item href="/admin/posts/create" :active="request()->routeIs('admin/posts/create')"> New post</x-dropdown-item>
+                        @endadmin
                         
                         <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()"> Log Out</x-dropdown-item>
 
