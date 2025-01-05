@@ -44,7 +44,7 @@
                             </button>
                         </x-slot>
 
-                        <x-dropdown-item href="/admin/dashboard"> Dashboard </x-dropdown-item>
+                        <x-dropdown-item href="/admin/posts" :active="request()->routeIs('admin/posts')"> Dashboard </x-dropdown-item>
 
                         <x-dropdown-item href="/admin/posts/create" :active="request()->routeIs('admin/posts/create')"> New post</x-dropdown-item>
                         
