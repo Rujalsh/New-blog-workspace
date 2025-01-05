@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\MustBeAdministrator;
+use App\Models\User;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +37,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
+
+        Gate::define('admin', function(User $user){
+            return $user->username === 'Rambo';
+        });
         // Route::aliasMiddleware('admin', MustBeAdministrator::class);
+
+        Blade::if('admin', function(){
+            return request()->user()?->can('admin');
+        });
     }
 }
