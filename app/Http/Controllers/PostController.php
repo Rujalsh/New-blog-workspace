@@ -11,10 +11,14 @@ use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         //Render a list of a resource
-    return view('posts.index', [
-        'posts' => Post::latest()->filter(request(['search','category','author']))->paginate(6)->withQueryString(), 
+        return view('posts.index', [
+            'posts' => Post::latest()
+            ->filter(request(['search','category','author']))
+            ->paginate(6
+            )->withQueryString(), 
 
     ]);
     }
