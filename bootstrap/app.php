@@ -12,9 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Register your custom middleware
-    // $middleware->alias('admin', MustBeAdministrator::class); // Define 'admin' alias
-    $middleware->alias(['admin' => \App\Http\Middleware\MustBeAdministrator::class]);
+        //
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
