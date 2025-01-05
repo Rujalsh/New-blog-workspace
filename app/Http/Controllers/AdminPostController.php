@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use id;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostController extends Controller
 {
@@ -29,7 +30,7 @@ class AdminPostController extends Controller
         
         $attributes = $this->validatePost();
         
-        $attributes['user_id'] = auth()->id();
+        $attributes['user_id'] = Auth::id();
         $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 
         Post::create($attributes);
