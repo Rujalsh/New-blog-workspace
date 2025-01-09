@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
         Model::unguard();
 
         Gate::define('admin', function(User $user){
-            return $user->username === 'Rambo';
+            return $user->username === 'rambo';
         });
         // Route::aliasMiddleware('admin', MustBeAdministrator::class);
 
