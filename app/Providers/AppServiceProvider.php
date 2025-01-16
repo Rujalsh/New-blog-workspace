@@ -39,9 +39,10 @@ class AppServiceProvider extends ServiceProvider
         Model::unguard();
 
         Gate::define('admin', function(User $user){
-            return $user->username === 'rambo';
+            return $user->admin === 1;
         });
         // Route::aliasMiddleware('admin', MustBeAdministrator::class);
+
 
         Blade::if('admin', function(){
             return request()->user()?->can('admin');
