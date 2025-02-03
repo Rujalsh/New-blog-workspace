@@ -11,7 +11,7 @@
 
 {{--Center design  --}}
 
-@if (session()->has('success'))
+{{-- @if (session()->has('success'))
     <div x-data="{show: true}"
         x-init="setTimeout(() => show =false, 4000)"
         x-show="show"
@@ -19,4 +19,16 @@
         style="top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
         <p>{{ session('success') }}</p>
     </div>
+@endif --}}
+
+@if (session()->has('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                title: "{{ session('success') }}",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        });
+    </script>
 @endif
