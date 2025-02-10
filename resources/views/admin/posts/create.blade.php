@@ -1,4 +1,4 @@
-<x-layout>
+<x-layouts.layout>
     <x-setting heading="Publish New post">
         
         <form method="POST" action="/admin/posts" enctype="multipart/form-data">
@@ -37,4 +37,4 @@
     </x-setting>
 
 
-</x-layout>
+</x-layouts.layout>

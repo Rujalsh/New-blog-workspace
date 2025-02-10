@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class RegisterController extends Controller
 {
     public function create(){
-        return view('register.create');
+        return view('login-pages.register.create');
     }
 
     public function store()
