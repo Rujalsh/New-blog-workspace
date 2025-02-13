@@ -15,4 +15,8 @@ class NavController extends Controller
     {
         return view('components.layouts.navbar-components.contact-us');
     }
+    public function dashboard()
+    {
+        return view('components.dashboard.hero');
+    }
 }

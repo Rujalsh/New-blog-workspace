@@ -11,6 +11,8 @@ use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
 
+Route::get('/dashboard', [NavController::class, 'dashboard'])->name('dashboard');
+
 Route::get('/about', [NavController::class, 'about'])->name('about');
 Route::get('/contact', [NavController::class, 'showContactUs'])->name('contact');
 
