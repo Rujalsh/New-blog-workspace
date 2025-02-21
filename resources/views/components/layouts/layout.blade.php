@@ -12,7 +12,7 @@
 
     
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
-
+    
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
 
     <style>
@@ -52,6 +52,7 @@
         <x-layouts.subscribe />
 
         <x-layouts.footer />
+        <x-flash />
 
         <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -65,6 +66,8 @@
     <script src="{{ asset('Frontend/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('Frontend/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('Frontend/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <!-- Main JS File -->
     <script src="{{ asset('Frontend/assets/js/main.js') }}"></script>
