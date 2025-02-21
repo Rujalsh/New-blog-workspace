@@ -15,8 +15,23 @@
             <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">Home</a></li>
             <li><a href="/about" class="{{ request()->is('about') ? 'active' : '' }}">About</a></li>
             <li><a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a></li>
-        
-            
+
+                <!-- Search -->
+            <li class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
+                <form method="GET" action="/">
+                    @if (request('category'))
+                        <input type="hidden" name="category" value="{{request('category')}}">
+                    @endif
+                    
+                    <input 
+                        type="text" 
+                        name="search" 
+                        placeholder="Find something"
+                        class="bg-transparent placeholder-black font-semibold text-sm"
+                        value="{!! request('search')!!}">
+                </form>
+            </li>
+
             @auth
             <li class="dropdown">
                 <a href="/">
@@ -25,7 +40,7 @@
                 </a>
                 <ul>
                     @admin
-                    <li><a href="/admin/posts" :active="request()->routeIs('admin/posts')">Dashboard</a></li>
+                    <li><a href="/dashboard" :active="request()->routeIs('admin/posts')">Dashboard</a></li>
                     <li><a href="/admin/posts/create" :active="request()->routeIs('admin/posts/create')">New Post</a></li>
                     @endadmin
                     <li>
